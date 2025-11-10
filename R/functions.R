@@ -42,12 +42,9 @@ list_cancer_types_li <- function() {
 #' @note use in chat_structured
 #' @export
 cantypes_str = function() {
-    type_array(type_object(codes = type_string(description = "TCGA tumor type codes"), 
-        types = type_string(description = "TCGA tumor study names"), 
-        subtypes = type_string(description = "TCGA tumor subtype names"), 
-        .description = "data frame of tumor types"))
+type_array(type_object(codes = type_string(description = "TCGA tumor type codes"),
+         types = type_string(description = "TCGA tumor study names"), .description="list of codes and study names"))
 }
- 
 
 #
 #' List Available Assays for a Disease
