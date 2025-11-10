@@ -9,3 +9,6 @@ cantypes_str()
 \description{
 type object for use with cancer types
 }
+\note{
+use in chat_structured
+}

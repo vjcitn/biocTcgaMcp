@@ -15,9 +15,28 @@ list_cancer_types_df <- function() {
     stringsAsFactors = FALSE
   )
   
-  message(sprintf("Found %d available TCGA cancer types", nrow(result)))
+#  message(sprintf("Found %d available TCGA cancer types", nrow(result)))
   return(result)
 }
+
+#> data('diseaseCodes', package = "TCGAutils")
+#> head(diseaseCodes)
+#  Study.Abbreviation Available SubtypeData
+#1                ACC       Yes         Yes
+
+
+#' Produce list of code-name pairs for available TCGA Cancer Types
+#'
+#' @return A data.frame with disease codes, names, and subtype availability
+list_cancer_types_li <- function() {
+  data('diseaseCodes', package = "TCGAutils")
+  dca = diseaseCodes |> dplyr::filter(Available == "Yes")
+  ans = vector("list", nrow(dca))
+  ans = lapply(seq_len(nrow(dca)), function(x) c(code=dca$Study.Abbreviation[x], name=dca$Study.Name[x]))
+#  names(ans) = cda$Study.Abbreviation
+  ans
+}
+
 
 #' type object for use with cancer types
 #' @note use in chat_structured
