@@ -1,6 +1,6 @@
 Package: biocTcgaMcp
 Title: mcp server draft
-Version: 0.0.3
+Version: 0.0.4
 Authors@R:
     person(given = "Vince",
            family = "Carey",
@@ -9,7 +9,7 @@ Authors@R:
            comment = c(ORCID = "0000-0003-4046-0063"))
 Description: mcp server draft
 Depends: R (>= 4.0.0), tools, utils, ellmer, mcptools,
-	curatedTCGAData, TCGAutils
+	curatedTCGAData, TCGAutils, btw
 Suggests: knitr, BiocStyle, testthat, rmarkdown, DT
 License: Artistic-2.0
 VignetteBuilder: knitr
