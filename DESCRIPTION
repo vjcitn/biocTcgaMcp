@@ -1,6 +1,6 @@
 Package: biocTcgaMcp
 Title: mcp server draft
-Version: 0.0.2
+Version: 0.0.3
 Authors@R:
     person(given = "Vince",
            family = "Carey",
@@ -10,7 +10,7 @@ Authors@R:
 Description: mcp server draft
 Depends: R (>= 4.0.0), tools, utils, ellmer, mcptools,
 	curatedTCGAData, TCGAutils
-Suggests: knitr, BiocStyle, testthat, rmarkdown
+Suggests: knitr, BiocStyle, testthat, rmarkdown, DT
 License: Artistic-2.0
 VignetteBuilder: knitr
 biocViews: Infrastructure

@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions.R
 \name{list_cancer_types_li}
 \alias{list_cancer_types_li}
-\title{Produce list of code-name pairs for available TCGA Cancer Types}
+\title{Produce list of code-name pairs for TCGA Cancer Types that have available assays according to TCGAutils}
 \usage{
 list_cancer_types_li()
 }
@@ -10,5 +10,5 @@ list_cancer_types_li()
 A data.frame with disease codes, names, and subtype availability
 }
 \description{
-Produce list of code-name pairs for available TCGA Cancer Types
+Produce list of code-name pairs for TCGA Cancer Types that have available assays according to TCGAutils
 }

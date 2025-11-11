@@ -25,7 +25,7 @@ list_cancer_types_df <- function() {
 #1                ACC       Yes         Yes
 
 
-#' Produce list of code-name pairs for available TCGA Cancer Types
+#' Produce list of code-name pairs for TCGA Cancer Types that have available assays according to TCGAutils
 #'
 #' @return A data.frame with disease codes, names, and subtype availability
 list_cancer_types_li <- function() {

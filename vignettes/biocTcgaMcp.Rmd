@@ -1,0 +1,81 @@
+---
+title: "MCP for TCGA computations with Bioconductor"
+shorttitle: "outlier dytection methods"
+author: "Vincent J. Carey, stvjc at channing.harvard.edu"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{MCP for TCGA computations with Bioconductor}
+  %\VignetteEncoding{UTF-8}
+output:
+  BiocStyle::html_document:
+    highlight: pygments
+    number_sections: yes
+    theme: united
+    toc: yes
+---
+
+# Introduction
+
+We want to enable a reliable natural language interface to
+curated TCGA facilities provided by Bioconductor.  One way to
+do this is through creation and registration of MCP-compliant tools
+that use Bioconductor facilities to prepare conversational
+responses and data objects to active R sessions.
+
+# Example
+
+In this example we require that a value has been provided for
+environment variable `OPENAI_API_KEY`.  We also assume that
+MCP configuration has been accomplished for the host system.
+Typically this involves a schema placed in `~/.config/mcptools`
+
+## Unstructured responses
+
+### Cancer type enumeration with and without MCP
+Enumerate cancer types:
+
+```{r doone, message=FALSE}
+library(ellmer)
+library(biocTcgaMcp)
+if (nchar(Sys.getenv("OPENAI_API_KEY"))>0) {
+ch = chat_openai(model="gpt-4o")
+ch$chat("List the tumor types in TCGA")
+}
+```
+
+The above result can have more or less than 31 cancer types.  To
+assert control over the operation
+
+```{r setuptools}
+if (nchar(Sys.getenv("OPENAI_API_KEY"))>0) {
+ch$set_tools(mcptools::mcp_tools())
+ch$chat("List the tumor types in TCGA")
+}
+```
+
+### Assay enumeration for a tumor type.
+
+
+```{r domore}
+if (nchar(Sys.getenv("OPENAI_API_KEY"))>0) {
+ch$chat("What assays are available for lung adenocarcinoma? Please provide the
+answer in a markdown table.")
+}
+```
+
+## Structured response
+
+We can use the `chat_structured` facility to return data directly
+to the R session.  `cantypes_str` is a hand-coded schema prepared
+for cancer type enumeration in a list.  Here we reset the model
+in use.
+
+```{r dostruc}
+if (nchar(Sys.getenv("OPENAI_API_KEY"))>0) {
+ch = chat_openai(model="gpt-4o")
+ch$set_tools(mcptools::mcp_tools())
+ans = ch$chat_structured("List the tumor types in TCGA that available assays in curatedTCGAData.", type=cantypes_str())
+DT::datatable(ans)
+}
+```

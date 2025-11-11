@@ -6,9 +6,9 @@
 #' make tool for listing cancer types
 #' @import ellmer
 #' @export
-list_cancer_types = tool(fun=list_cancer_types_li, description="
- This function uses TCGAutils to list cancer types.
-", arguments=list(), convert=TRUE)
+list_cancer_types = tool(fun=list_cancer_types_li, 
+  description="This function uses TCGAutils to list cancer types that have samples available to curatedTCGAData.",
+  arguments=list(), convert=TRUE)
 
 #' make tool for listing available assays
 #' @export
