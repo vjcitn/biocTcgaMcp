@@ -6,10 +6,22 @@ With this package installed and a suitable configuration file at `~/.config/mcpt
 that includes
 
 ```
-"r-tcga": {
+{
+  "mcpServers": {
+    "r-mcptools": {
+      "command": "Rscript",
+      "args": ["-e", "mcptools::mcp_server()"]
+    },
+    "r-btw": {
+      "command": "Rscript",
+      "args": ["-e", "btw::btw_mcp_server()"]
+    },
+    "r-tcga": {
       "command": "Rscript",
       "args": ["-e", "biocTcgaMcp::btcga_mcp_server()"]
     }
+  }
+}
 ```
 
 then
